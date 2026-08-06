@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import API from "../api/axiosInstance";
-import Navbar from "../Components/Navbar";
+import API from "../api/axiosInstance.js";
+import Navbar from "../Components/Navbar.jsx";
 
 const LEAVE_TYPES = [
   "Sick Leave",

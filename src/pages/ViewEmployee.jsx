@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import API from "../api/axiosInstance";
-import Navbar from "../components/Navbar";
+import API from "../api/axiosInstance.js";
+import Navbar from "../components/Navbar.jsx";
 
 function ViewEmployee() {
   const { id } = useParams();

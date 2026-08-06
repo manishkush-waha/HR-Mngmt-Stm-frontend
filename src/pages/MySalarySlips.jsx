@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import API from "../api/axiosInstance";
-import Navbar from "../Components/Navbar";
+import API from "../api/axiosInstance.js";
+import Navbar from "../Components/Navbar.jsx";
 
 function MySalarySlips() {
   const [payrolls, setPayrolls] = useState([]);

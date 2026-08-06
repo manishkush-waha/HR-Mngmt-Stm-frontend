@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import API from "../api/axiosInstance";
-import Navbar from "../Components/Navbar";
+import API from "../api/axiosInstance.js";
+import Navbar from "../Components/Navbar.jsx";
 
 const DEFAULT_STYLE = {
   navbar_color: "#1f3b73",

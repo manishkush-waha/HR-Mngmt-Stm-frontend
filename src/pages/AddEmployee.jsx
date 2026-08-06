@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api/axiosInstance";
-import Navbar from "../components/Navbar";
+import API from "../api/axiosInstance.js";
+import Navbar from "../components/Navbar.jsx";
 
 function AddEmployee() {
   const navigate = useNavigate();

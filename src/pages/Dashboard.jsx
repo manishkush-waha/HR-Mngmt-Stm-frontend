@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import API from "../api/axiosInstance";
+import API from "../api/axiosInstance.js";
 
 import * as XLSX from "xlsx";
 import {

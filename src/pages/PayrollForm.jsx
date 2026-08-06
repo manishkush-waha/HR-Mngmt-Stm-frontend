@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api/axiosInstance";
-import Navbar from "../Components/Navbar";
+import API from "../api/axiosInstance.js";
+import Navbar from "../Components/Navbar.jsx";
 
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 

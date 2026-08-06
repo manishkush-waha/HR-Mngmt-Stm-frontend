@@ -1,20 +1,20 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import AddEmployee from "./pages/AddEmployee";
-import ViewEmployee from "./pages/ViewEmployee";
-import EditEmployee from "./pages/EditEmployee";
-import AddAsset from "./pages/AddAsset";
-import ViewAssets from "./pages/ViewAssets";
-import LeaveRequests from "./pages/LeaveRequests";
-import BulkUpload from "./pages/BulkUpload";
-import EmployeeDashboard from "./pages/EmployeeDashboard";
-import EmployeeProfileView from "./pages/EmployeeProfileView";
-import PayrollForm from "./pages/PayrollForm";
-import PayrollList from "./pages/PayrollList";
-import MySalarySlips from "./pages/MySalarySlips";
-import ProtectedRoute from "./Components/ProtectedRoute";
+import Login from "./pages/Login.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import AddEmployee from "./pages/AddEmployee.jsx";
+import ViewEmployee from "./pages/ViewEmployee.jsx";
+import EditEmployee from "./pages/EditEmployee.jsx";
+import AddAsset from "./pages/AddAsset.jsx";
+import ViewAssets from "./pages/ViewAssets.jsx";
+import LeaveRequests from "./pages/LeaveRequests.jsx";
+import BulkUpload from "./pages/BulkUpload.jsx";
+import EmployeeDashboard from "./pages/EmployeeDashboard.jsx";
+import EmployeeProfileView from "./pages/EmployeeProfileView.jsx";
+import PayrollForm from "./pages/PayrollForm.jsx";
+import PayrollList from "./pages/PayrollList.jsx";
+import MySalarySlips from "./pages/MySalarySlips.jsx";
+import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import API from "../api/axiosInstance";
-import Navbar from "../components/Navbar";
+import API from "../api/axiosInstance.js";
+import Navbar from "../components/Navbar.jsx";
 
 function AddAsset() {
   const { id } = useParams();
