@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import API from "../api/axiosInstance";
-import Navbar from "../components/Navbar.js";
-import { useParams } from "react-router-dom.jsx";
+import { useParams } from "react-router-dom";
+import API from "../api/axiosInstance.js";
+import Navbar from "../components/Navbar.jsx";
 
 function ViewAssets() {
   const para = useParams();
