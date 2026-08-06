@@ -8,7 +8,7 @@ function LeaveRequests() {
   const [error, setError] = useState("");
 
   const fetchLeaves = () => {
-    API.get("/leaves/all/")
+    API.get("/leaves/all")
       .then((res) => setLeaves(res.data))
       .catch(() => setError("Leave requests did not load."));
   };
@@ -18,7 +18,7 @@ function LeaveRequests() {
   const updateStatus = async (id, status) => {
     setMessage(""); setError("");
     try {
-      await API.patch(`/leaves/${id}/status/`, { status });
+      await API.patch(`/leaves/${id}/status`, { status });
       setMessage(`Leave ${status} Successfully! The email has been sent to the employee.`);
       fetchLeaves();
     } catch {

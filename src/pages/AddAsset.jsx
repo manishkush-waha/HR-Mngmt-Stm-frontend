@@ -10,8 +10,8 @@ function AddAsset() {
   const [form, setForm] = useState({
     name: "",
     type: "",
-    tracking_id: "",
-    date_joining: "",
+    trackingId: "",
+    dateJoining: "",
     status: "Using",
   });
 
@@ -30,7 +30,7 @@ function AddAsset() {
     setError("");
 
     try {
-      await API.post(`/employees/${id}/assets/add/`, form);
+      await API.post(`/employees/${id}/assets/add`, form);
       navigate("/assets");
     } catch (err) {
       setError("Asset add nahi ho pa raha. Tracking ID unique hona chahiye.");
@@ -66,17 +66,17 @@ function AddAsset() {
           />
 
           <input
-            name="tracking_id"
+            name="trackingId"
             placeholder="Tracking ID"
-            value={form.tracking_id}
+            value={form.trackingId}
             onChange={handleChange}
             required
           />
 
           <input
-            name="date_joining"
+            name="dateJoining"
             type="date"
-            value={form.date_joining}
+            value={form.dateJoining}
             onChange={handleChange}
             required
           />

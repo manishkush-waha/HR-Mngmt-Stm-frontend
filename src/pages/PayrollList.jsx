@@ -26,7 +26,7 @@ function PayrollList() {
   });
 
   useEffect(() => {
-    API.get("/payrolls").then((res) => {setPayrolls(res.data); console.log(res.data)}).catch(() => setError("Payrolls load nahi hue"));
+    API.get("/payrolls").then((res) => setPayrolls(res.data)).catch(() => setError("Payrolls load nahi hue"));
   }, []);
 
   const handleStyleChange = (e) => setStyle({ ...style, [e.target.name]: e.target.value });

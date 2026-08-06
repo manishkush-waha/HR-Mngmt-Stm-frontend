@@ -20,9 +20,7 @@ function BulkUpload() {
     formData.append("file", file);
 
     try {
-      const res = await API.post("/employees/bulk-upload/", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await API.post("/employees/bulk-upload", formData);
       setMessage(res.data.message);
       setResult(res.data);
     } catch (err) {

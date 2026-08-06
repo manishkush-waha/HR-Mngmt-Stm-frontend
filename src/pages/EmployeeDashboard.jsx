@@ -20,23 +20,23 @@ function EmployeeDashboard() {
   const [leaves, setLeaves] = useState([]);
   const [showLeaves, setShowLeaves] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({ leave_type: "Sick Leave", from_date: "", to_date: "", reason: "" });
+  const [form, setForm] = useState({ leaveType: "Sick Leave", fromDate: "", toDate: "", reason: "" });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
     if (!employeeId) { setError("Employee record not found. Please contact HR."); return; }
-    API.get(`/employees/${employeeId}/`).then((res) => setEmp(res.data)).catch(() => setError("Profile load nahi hua"));
+    API.get(`/employees/${employeeId}`).then((res) => setEmp(res.data)).catch(() => setError("Profile load nahi hua"));
   }, [employeeId]);
 
   const handleViewAssets = () => {
-    API.get(`/employees/${employeeId}/assets/`)
+    API.get(`/employees/${employeeId}/assets`)
       .then((res) => { setAssets(res.data); setShowAssets(true); })
       .catch(() => setError("Assets did not load."));
   };
 
   const handleViewLeaves = () => {
-    API.get(`/leaves/?employee_id=${employeeId}`)
+    API.get(`/leaves/?employeeId=${employeeId}`)
       .then((res) => { setLeaves(res.data); setShowLeaves(true); })
       .catch(() => setError("Leaves did not load."));
   };
@@ -45,10 +45,10 @@ function EmployeeDashboard() {
     e.preventDefault();
     setError(""); setSuccess("");
     try {
-      await API.post("/leaves/", { ...form, employee: employeeId });
+      await API.post("/leaves", { ...form, employee: employeeId });
       setSuccess("Leave request submitted! The email has been sent to HR.");
       setShowForm(false);
-      setForm({ leave_type: "Sick Leave", from_date: "", to_date: "", reason: "" });
+      setForm({ leaveType: "Sick Leave", fromDate: "", toDate: "", reason: "" });
       handleViewLeaves();
     } catch {
       setError("The leave request was not submitted. Please try again.");
@@ -106,15 +106,15 @@ function EmployeeDashboard() {
                 <div className="form-card" style={{ maxWidth: 500 }}>
                   <h2>Leave Request</h2>
                   <form onSubmit={handleLeaveSubmit}>
-                    <select value={form.leave_type} onChange={(e) => setForm({ ...form, leave_type: e.target.value })}>
+                    <select value={form.leaveType} onChange={(e) => setForm({ ...form, leaveType: e.target.value })}>
                       {LEAVE_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
 
                     <label style={{ fontSize: 13, color: "#718096", marginTop: 8, display: "block" }}>From Date</label>
-                    <input type="date" value={form.from_date} onChange={(e) => setForm({ ...form, from_date: e.target.value })} required />
+                    <input type="date" value={form.fromDate} onChange={(e) => setForm({ ...form, fromDate: e.target.value })} required />
 
                     <label style={{ fontSize: 13, color: "#718096", marginTop: 8, display: "block" }}>To Date</label>
-                    <input type="date" value={form.to_date} onChange={(e) => setForm({ ...form, to_date: e.target.value })} required />
+                    <input type="date" value={form.toDate} onChange={(e) => setForm({ ...form, toDate: e.target.value })} required />
 
                     <textarea
                       placeholder="Reason for leave"
@@ -153,9 +153,9 @@ function EmployeeDashboard() {
                       {leaves.length > 0 ? (
                         leaves.map((leave) => (
                           <tr key={leave.id}>
-                            <td>{leave.leave_type}</td>
-                            <td>{leave.from_date}</td>
-                            <td>{leave.to_date}</td>
+                            <td>{leave.leaveType}</td>
+                            <td>{leave.fromDate}</td>
+                            <td>{leave.toDate}</td>
                             <td>{leave.reason}</td>
                             <td><span style={{ fontWeight: 600, color: statusColor(leave.status) }}>{leave.status}</span></td>
                           </tr>
@@ -193,10 +193,10 @@ function EmployeeDashboard() {
                             <td>{asset.id}</td>
                             <td>{asset.name}</td>
                             <td>{asset.type}</td>
-                            <td>{asset.tracking_id}</td>
-                            <td>{asset.date_joining}</td>
+                            <td>{asset.trackingId}</td>
+                            <td>{asset.dateJoining}</td>
                             <td>{asset.status}</td>
-                            <td>{asset.submitted_date || "-"}</td>
+                            <td>{asset.submittedDate || "-"}</td>
                           </tr>
                         ))
                       ) : (

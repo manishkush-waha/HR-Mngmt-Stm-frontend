@@ -19,8 +19,8 @@ function Login() {
       localStorage.setItem("refresh", res.data.refresh);
       localStorage.setItem("role", res.data.user.role);
       localStorage.setItem("username", res.data.user.username);
-      if (res.data.user.employee_id) {
-        localStorage.setItem("employee_id", res.data.user.employee_id);
+      if (res.data.user.employeeId) {
+        localStorage.setItem("employee_id", res.data.user.employeeId);
       }
 
       if (res.data.user.role === "HR") {

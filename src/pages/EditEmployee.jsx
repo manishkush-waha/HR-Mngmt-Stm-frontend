@@ -13,7 +13,7 @@ function EditEmployee() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    API.get(`/employees/${id}/`).then((res) => {
+    API.get(`/employees/${id}`).then((res) => {
       const d = res.data;
       setForm({
         username: d.username || "",
@@ -36,7 +36,7 @@ function EditEmployee() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await API.put(`/employees/${id}/`, form);
+      await API.put(`/employees/${id}`, form);
       navigate("/dashboard");
     } catch (err) {
       setError("Update failed");

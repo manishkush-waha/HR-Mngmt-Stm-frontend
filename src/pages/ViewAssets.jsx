@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import API from "../api/axiosInstance";
 import Navbar from "../components/Navbar";
+import { useParams } from "react-router-dom";
 
 function ViewAssets() {
+  const para = useParams();
   const [assets, setAssets] = useState([]);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   const fetchAssets = async () => {
     try {
-      const res = await API.get("/assets/");
+      const res = await API.get(`/employees/${para.id}/assets`);
       setAssets(res.data);
     } catch (err) {
       setError("Assets does not load it.");
@@ -25,7 +27,7 @@ function ViewAssets() {
     setError("");
 
     try {
-      await API.patch(`/assets/${assetId}/status/`, {
+      await API.patch(`/assets/${assetId}/status`, {
         status: status,
       });
 
@@ -81,10 +83,10 @@ function ViewAssets() {
                 assets.map((asset) => (
                   <tr key={asset.id}>
                     <td>{asset.id}</td>
-                    <td>{asset.employee_username}</td>
+                    <td>{asset.employeeUsername}</td>
                     <td>{asset.name}</td>
                     <td>{asset.type}</td>
-                    <td>{asset.tracking_id}</td>
+                    <td>{asset.trackingId}</td>
 
                     <td>
                       <select
@@ -100,7 +102,7 @@ function ViewAssets() {
                       </select>
                     </td>
 
-                    <td>{asset.submitted_date || "-"}</td>
+                    <td>{asset.submittedDate || "-"}</td>
 
                     {/* <td>
                       <button

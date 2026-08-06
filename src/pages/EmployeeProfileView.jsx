@@ -10,7 +10,7 @@ function EmployeeProfileView() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    API.get(`/employees/${id}/`)
+    API.get(`/employees/${id}`)
       .then((res) => setEmp(res.data))
       .catch(() => setError("Employee data did not load."));
   }, [id]);
@@ -46,7 +46,7 @@ function EmployeeProfileView() {
           <div className="detail-card">
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px 30px" }}>
               {fields.map(({ label, value }) => (
-                <div style={{ borderBottom: "1px solid #1e2d5a", paddingBottom: 8 }}>
+                <div key={value} style={{ borderBottom: "1px solid #1e2d5a", paddingBottom: 8 }}>
                   <span style={{ fontSize: 12, color: "#718096", display: "block" }}>{label}</span>
                   <span style={{ fontWeight: 600, color: "#4facfe" }}>{value}</span>
                 </div>
